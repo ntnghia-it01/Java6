@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,9 +49,15 @@ public class UserController {
 
 //	API thêm user
 //	URL = POST /users
-	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE })
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<ApiResponse<String>> addUserJson(@Valid @RequestBody UserPost user, Errors errors) {
+		return userService.addUser(user, errors);
+	}
+
+	@PostMapping(consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE })
+	@PreAuthorize("hasRole('ADMIN')")
+	public ResponseEntity<ApiResponse<String>> addUserForm(@Valid @ModelAttribute UserPost user, Errors errors) {
 		return userService.addUser(user, errors);
 	}
 
