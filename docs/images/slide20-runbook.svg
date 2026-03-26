@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <style>
+      .title { font: 700 44px Arial, sans-serif; fill: #0f172a; }
+      .cmd { font: 600 24px 'Courier New', monospace; fill: #0f172a; }
+      .desc { font: 400 20px Arial, sans-serif; fill: #334155; }
+    </style>
+  </defs>
+  <rect width="1280" height="720" fill="#f8fafc"/>
+  <text x="70" y="80" class="title">Environment Runbook</text>
+
+  <rect x="90" y="140" width="1100" height="120" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+  <text x="120" y="195" class="cmd">docker-compose --env-file .env.dev up -d --build</text>
+  <text x="120" y="230" class="desc">Môi trường DEV: build + chạy app và sqlserver</text>
+
+  <rect x="90" y="290" width="1100" height="120" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+  <text x="120" y="345" class="cmd">docker-compose -f docker-compose.yml --env-file .env.prod up -d</text>
+  <text x="120" y="380" class="desc">Môi trường PROD: dùng biến prod, chạy nền</text>
+
+  <rect x="90" y="440" width="1100" height="120" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="3"/>
+  <text x="120" y="495" class="cmd">docker-compose --env-file .env.prod down</text>
+  <text x="120" y="530" class="desc">Dừng môi trường an toàn, giữ volume nếu cần</text>
+</svg>
